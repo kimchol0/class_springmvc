@@ -1,28 +1,24 @@
 package cn.hp.ssm.controller.converter;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.springframework.core.convert.converter.Converter;
 
-public class CustomDateConverter implements Converter<String, Date> {
+public class CustomDateConverter implements Converter<String,Date> {
 
 	@Override
-	public Date convert(String paramString) {
-		
+	public Date convert(String paramS) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
+		
 		try {
-			sdf.parse(paramString);
+			return sdf.parse(paramS);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
-	
-	
 }
