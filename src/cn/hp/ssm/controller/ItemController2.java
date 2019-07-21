@@ -1,16 +1,17 @@
 package cn.hp.ssm.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import cn.hp.ssm.po.Items;
 import cn.hp.ssm.po.ItemsCustom;
 import cn.hp.ssm.service.ItemsService;
 
 @org.springframework.stereotype.Controller
+@RequestMapping("/items")
 public class ItemController2 {
 	
 	@Autowired
@@ -21,16 +22,37 @@ public class ItemController2 {
 		
 			List<ItemsCustom> itemsList = itemsService.findItemsList(null);
 			
-			//·µ»ØModelAndView
+			//ï¿½ï¿½ï¿½ï¿½ModelAndView
 			ModelAndView modelAndView =  new ModelAndView();
-			//Ïàµ± ÓÚrequestµÄsetAttribut£¬ÔÚjspÒ³ÃæÖÐÍ¨¹ýitemsListÈ¡Êý¾Ý
+			//ï¿½àµ± ï¿½ï¿½requestï¿½ï¿½setAttributï¿½ï¿½ï¿½ï¿½jspÒ³ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½itemsListÈ¡ï¿½ï¿½ï¿½ï¿½
 			modelAndView.addObject("itemsList", itemsList);
 				
-			//Ö¸¶¨ÊÓÍ¼
+			//Ö¸ï¿½ï¿½ï¿½ï¿½Í¼
 			modelAndView.setViewName("items/itemsList");
 
 			return modelAndView;
 		
 	}
-
+	
+	
+	@RequestMapping(value = "/editItems",method = {RequestMethod.GET,RequestMethod.POST})
+	public String editItems(Model model,Integer id)throws Exception{
+		
+		ItemsCustom itemsCustom = itemsService.findItemsById(id);
+		
+		model.addAttribute("itemsCustom",itemsCustom);
+		
+		return "items/editItems";
+		
+	}
+	
+	@RequestMapping("/editItemsSubmit")
+	public String editItemSubmit(Integer id,ItemsCustom itemsCustom) throws Exception{
+		
+		itemsService.updateItems(id, itemsCustom);
+		
+		return "redirect:/items/queryItems.action";
+		
+	}
+	
 }
