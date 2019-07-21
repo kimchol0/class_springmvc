@@ -6,6 +6,10 @@ import cn.hp.ssm.po.ItemsCustom;
 import cn.hp.ssm.po.ItemsQueryVo;
 
 public interface ItemsMapperCustom {
-	//鍟嗗搧鏌ヨ鍒楄〃
+	
+	//商品查询列表
 		public List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo)throws Exception;
+
+	
+		
 }
