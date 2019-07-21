@@ -6,19 +6,17 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-
-	<!-- 处理器适配器 -->
-	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
-	
-	<bean name="/queryItems.action" class="cn.hp.ssm.controller.ItemController"></bean>
-	
-	<!-- 配置处理器映射器 -->
-	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
 	
 	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<!-- 使用注解 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!-- 扫描加注解的包 -->
+	<context:component-scan base-package="cn.hp.ssm.controller"></context:component-scan>
 	
 </beans>
