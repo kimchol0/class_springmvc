@@ -1,6 +1,6 @@
 利用springmvc做的练习
 
-页面地址为http://localhost:8080/class_springmvc/queryItems.action
+页面地址为localhost:8080/class_springmvc/items/queryItems.action
 
 开发环境为：
 
