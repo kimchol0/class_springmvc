@@ -1,4 +1,4 @@
 # class_springmvc
-鍒╃敤springmvc鍋氱殑缁冧範
+利用springmvc做的练习
 
-椤甸潰鍦板潃涓篽ttp://localhost:8080/class_springmvc/queryItems.action
+页面地址为ttp://localhost:8080/class_springmvc/queryItems.action
