@@ -17,4 +17,10 @@ public class JsonTest {
 
 	}
 
+	@RequestMapping("/responseJson")
+	public @ResponseBody ItemsCustom responseJson(ItemsCustom itemsCustom) {
+		
+		return itemsCustom;
+
+	}
 }
