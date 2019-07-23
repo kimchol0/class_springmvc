@@ -24,9 +24,20 @@
 		<!-- 转换器 -->
 		<property name="converters">
 			<list>
-				<!-- 日期类型转换 -->
-				<bean class="cn.hp.ssm.controller.converter.CustomDateConverter"/>
+			<!-- 日期类型转换 -->
+			<bean class="cn.hp.ssm.controller.converter.CustomDateConverter"/>
 			</list>
 		</property>
 	</bean>
+	
+	<!-- 文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!-- 设置上传大小，5M=5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
+	
+	<!-- 
+	tomcat配置文件的server.xml中添加以下内容
+	 <Context docBase="class_springmvc" path="/class_springmvc" reloadable="true" source="org.eclipse.jst.jee.server:class_springmvc"/><Context docBase="D:\workspace\SpringToolSuite4\class_springmvc\tempupload" path="/pic" reloadable="true"/>
+	 -->
 </beans>
